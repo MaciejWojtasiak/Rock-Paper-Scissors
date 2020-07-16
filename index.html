@@ -4,10 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rock-Paper-Scissor game</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+
+    <div class="wrapper">
+        <header>
+            <h1>Rock-Paper-Scissor</h1>
+            <div class="info">
+                <a href="#">About</a>
+                <a href="#">Help</a>
+            </div>
+        </header>
+        <div class="container">
+            <div class="scoreboard"></div>
+        </div>
+    </div>
 
     <script>
         function computerPlay() {
@@ -25,27 +39,55 @@
             console.log(computerLower);
 
             if (playerLower == computerLower) {
+                console.log("Draw")
                 result += "Draw";
             }
 
             if (playerLower == "paper" && computerLower == "rock" || playerLower == "rock" && computerLower ==
                 "scissors" || playerLower == "scissors" && computerLower == "paper") {
-                result += "You win! " + playerLower + " beats " + computerLower;
+                console.log("You win! " + playerLower + " beats " + computerLower);
+                result += "player";
             }
 
             if (playerLower == "rock" && computerLower == "paper" || playerLower == "scissors" && computerLower ==
                 "rock" || playerLower == "paper" && computerLower == "scissors") {
-                result += "You loose! " + computerLower + " beats " + playerLower;
-
+                console.log("You loose! " + computerLower + " beats " + playerLower);
+                result += "computer";
             }
 
             return result;
         }
 
-        const playerMove = "scissors";
-        const computerMove = computerPlay();
 
-        console.log(playRound(playerMove, computerMove));
+        function game() {
+            let computerScore = 0;
+            let playerScore = 0;
+            let gameResult = "";
+
+            for (let i = 0; i < 5; i++) {
+                const playerMove = prompt("Please write rock, paper or scissors: ");
+                const computerMove = computerPlay();
+                let result = playRound(playerMove, computerMove);
+                if (result == "player") {
+                    playerScore++;
+                } else if (result == "computer") {
+                    computerScore++;
+                }
+                console.log("Computer: " + computerScore + " Player: " + playerScore);
+            }
+
+            if (playerScore > computerScore) {
+                gameResult += "Player Wins, score: " + playerScore + " to " + computerScore;
+            } else if (playerScore < computerScore) {
+                gameResult += "Computer Wins, score: " + computerScore + " to " + playerScore;
+            } else {
+                gameResult += computerScore + " to " + playerScore;
+            }
+
+            return gameResult;
+        }
+
+        // console.log(game());
     </script>
 </body>
 
