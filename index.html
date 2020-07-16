@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        function computerPlay() {
+            const MOVES = ["Rock", "Paper", "Scissors"];
+            let randomNumber = Math.floor(Math.random() * 3);
+            return MOVES[randomNumber];
+        }
+
+        function playRound(playerSelection, computerSelection) {
+            let playerLower = playerSelection.toLowerCase();
+            let computerLower = computerSelection.toLowerCase();
+
+            let result = "";
+            console.log(playerLower);
+            console.log(computerLower);
+
+            if (playerLower == computerLower) {
+                result += "Draw";
+            }
+
+            if (playerLower == "paper" && computerLower == "rock" || playerLower == "rock" && computerLower ==
+                "scissors" || playerLower == "scissors" && computerLower == "paper") {
+                result += "You win! " + playerLower + " beats " + computerLower;
+            }
+
+            if (playerLower == "rock" && computerLower == "paper" || playerLower == "scissors" && computerLower ==
+                "rock" || playerLower == "paper" && computerLower == "scissors") {
+                result += "You loose! " + computerLower + " beats " + playerLower;
+
+            }
+
+            return result;
+        }
+
+        const playerMove = "scissors";
+        const computerMove = computerPlay();
+
+        console.log(playRound(playerMove, computerMove));
+    </script>
+</body>
+
+</html>
