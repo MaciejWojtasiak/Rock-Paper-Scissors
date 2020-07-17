@@ -20,101 +20,41 @@
         </header>
         <div class="container">
             <div class="game-info">
-                <p>Hello There. Test your luck against the computer player in this classic game. Best score out of five
-                    will win the round! </p>
+                <p>Hello there. Test your luck against the computer player in this classic game. Win 5 rounds to win the
+                    game! </p>
             </div>
             <div class="scoreboard">
-                <div class="label" id="player-label">
+                <div class="label">
                     <h1>Player</h1>
                 </div>
                 <div class="label" id="results">
-                    <h2 id="user-score" style="display: inline;">0</h2> : <h2 id="computer-score"
+                    <h2 id="player-score" style="display: inline;">0</h2> : <h2 id="computer-score"
                         style="display: inline;">0</h2>
                 </div>
-                <div class="label" id="computer-label">
+                <div class="label">
                     <h1>Computer</h1>
                 </div>
             </div>
+            <div class="results-info">
+                <p class="results-message">Click on the icon below to start the game.</p><button class="restart">Play
+                    again?</button>
+            </div>
             <div class="game-options">
-                <div class="choice" id="rock">
-                    <img src="images/rock.png" alt="">
+                <div class="choice">
+                    <img src="images/rock.png" alt="rock" id="rock">
                 </div>
-                <div class="choice" id="paper">
-                    <img src="images/paper.png" alt="">
+                <div class="choice">
+                    <img src="images/paper.png" alt="paper" id="paper">
                 </div>
-                <div class="choice" id="scissors">
-                    <img src="images/scissors.png" alt="">
+                <div class="choice">
+                    <img src="images/scissors.png" alt="scissors" id="scissors">
                 </div>
             </div>
         </div>
 
     </div>
 
-    <script>
-        function computerPlay() {
-            const MOVES = ["Rock", "Paper", "Scissors"];
-            let randomNumber = Math.floor(Math.random() * 3);
-            return MOVES[randomNumber];
-        }
-
-        function playRound(playerSelection, computerSelection) {
-            let playerLower = playerSelection.toLowerCase();
-            let computerLower = computerSelection.toLowerCase();
-
-            let result = "";
-            console.log(playerLower);
-            console.log(computerLower);
-
-            if (playerLower == computerLower) {
-                console.log("Draw")
-                result += "Draw";
-            }
-
-            if (playerLower == "paper" && computerLower == "rock" || playerLower == "rock" && computerLower ==
-                "scissors" || playerLower == "scissors" && computerLower == "paper") {
-                console.log("You win! " + playerLower + " beats " + computerLower);
-                result += "player";
-            }
-
-            if (playerLower == "rock" && computerLower == "paper" || playerLower == "scissors" && computerLower ==
-                "rock" || playerLower == "paper" && computerLower == "scissors") {
-                console.log("You loose! " + computerLower + " beats " + playerLower);
-                result += "computer";
-            }
-
-            return result;
-        }
-
-
-        function game() {
-            let computerScore = 0;
-            let playerScore = 0;
-            let gameResult = "";
-
-            for (let i = 0; i < 5; i++) {
-                const playerMove = prompt("Please write rock, paper or scissors: ");
-                const computerMove = computerPlay();
-                let result = playRound(playerMove, computerMove);
-                if (result == "player") {
-                    playerScore++;
-                } else if (result == "computer") {
-                    computerScore++;
-                }
-                console.log("Computer: " + computerScore + " Player: " + playerScore);
-            }
-
-            if (playerScore > computerScore) {
-                gameResult += "Player Wins, score: " + playerScore + " to " + computerScore;
-            } else if (playerScore < computerScore) {
-                gameResult += "Computer Wins, score: " + computerScore + " to " + playerScore;
-            } else {
-                gameResult += computerScore + " to " + playerScore;
-            }
-
-            return gameResult;
-        }
-
-        // console.log(game());
+    <script src="app.js">
     </script>
 </body>
 
