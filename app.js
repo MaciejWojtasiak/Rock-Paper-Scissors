@@ -53,7 +53,7 @@ function play(e) {
         restartBtn.addEventListener('click', () => initializeGame());
     }
     if (cScore == 5) {
-        resultsMessage.innerHTML = `Computer wins the game! `;
+        resultsMessage.innerHTML = `Computer wins the game!`;
         restartBtn.style.display = 'inline-block';
         disableGame();
         restartBtn.addEventListener('click', () => initializeGame());
