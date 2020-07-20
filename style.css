@@ -152,7 +152,8 @@ button:hover {
     border-radius: 10px;
 }
 
-.choice:hover {
+.choice:hover,
+.choice:active {
     transform: scale(1.2);
     cursor: pointer;
 }
